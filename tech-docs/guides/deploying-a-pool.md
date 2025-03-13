@@ -2,7 +2,7 @@
 
 ## Deploying A New Lending Pool
 
-This guide will walk you step-by-step through deploying a new lending pool using the scripts in the blend-utils repository(https://github.com/blend-capital/blend-utils).
+TODO: replace with github link
 
 ## Prerequisites
 

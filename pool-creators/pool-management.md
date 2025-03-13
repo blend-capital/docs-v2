@@ -38,7 +38,7 @@ The backstop requirements to set specific pool status are as follows:
 
 * Backstop deposits must exceed the minimum backstop requirement
 
-\-and-
+-and-
 
 * Less than 50% of backstop deposits are queued for withdrawal.
 
@@ -46,7 +46,7 @@ The backstop requirements to set specific pool status are as follows:
 
 * Backstop deposit fall below the minimum deposit requirement
 
-\-or-
+-or-
 
 * Over 50% of backstop deposits are queued for withdrawal.
 
@@ -70,4 +70,7 @@ Owned pools also need to be updated when oracles need to be changed since pool a
 
 ### Risk/Interest Rate Parameters
 
-Pool admins can modify asset risk and interest rate parameters and add or remove assets from the pool. If the pool is a standard pool and does not have an admin, asset parameters require a pool migration to update.
+Pool admins can modify asset risk and interest rate parameters, add assets to the pool, and disable assets. Any change to asset parameters requires the update to be queued for seven days to give users time to react to the changes. &#x20;
+
+If the pool is a standard pool and does not have an admin, asset parameters require a pool migration to update.
+
