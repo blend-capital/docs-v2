@@ -18,48 +18,49 @@ In order to activate a pool the pool's backstop must meet the minimum backstop t
 **Example:**\
 With the following pool state:
 
-- 10,000,000 BLND:USDC 80:20 liquidity pool shares
-- 20,000,000 BLND liquidity pool balance
-- 500,000 USDC liquidity pool balance
-- fee of 0.3% The required liquidity pool shares to activate the pool would be 104,664.91 BLND:USDC 80:20 liquidity pool shares.\\
+* 10,000,000 BLND:USDC 80:20 liquidity pool shares
+* 20,000,000 BLND liquidity pool balance
+* 500,000 USDC liquidity pool balance
+* fee of 0.3% The required liquidity pool shares to activate the pool would be 104,664.91 BLND:USDC 80:20 liquidity pool shares.
 
-      $$
-      Ktotal = 20m^{0.8} * 500k^{0.2} = 9,563,525
-      $$
+```latex
+$$
+Ktotal = 20m^{0.8} * 500k^{0.2} = 9,563,525
+$$
 
-      $$
-      kPerShare = \frac{Ktotal}{10m} = 0.96
-      $$
+$$
+kPerShare = \frac{Ktotal}{10m} = 0.96
+$$
 
-      $$
-      sharesRequired = \frac{100,000}{kPerShare} = 104,664.91
-      $$
+$$
+sharesRequired = \frac{100,000}{kPerShare} = 104,664.91
+$$
 
-      **Balanced Deposit Requirement:**\\
+**Balanced Deposit Requirement:**\\
 
-      $$
-      requiredBLND = \frac{sharesRequired}{20m*Ktotal} = 218,672.42
-      $$
+$$
+requiredBLND = \frac{sharesRequired}{20m*Ktotal} = 218,672.42
+$$
 
-      $$
-      requiredUSDC = \frac{sharesRequired}{500k*Ktotal} = 5,466.81
-      $$
+$$
+requiredUSDC = \frac{sharesRequired}{500k*Ktotal} = 5,466.81
+$$
 
-      **USDC Deposit Requirement:**\
-      we increase required shares by the fee amount to account for the swap fee and slippage realized in a single sided deposit.\\
+**USDC Deposit Requirement:**\
+we increase required shares by the fee amount to account for the swap fee and slippage realized in a single sided deposit.\\
 
-      $$
-      requiredUSDC = -\frac{\frac{10m-sharesRequired*1.003}{10m}^(1/0.2)*500k-500k}{1-(0.003*(1-0.2))} = 25,202.79
-      $$
+$$
+requiredUSDC = -\frac{\frac{10m-sharesRequired*1.003}{10m}^(1/0.2)*500k-500k}{1-(0.003*(1-0.2))} = 25,202.79
+$$
 
-      **BLND Deposit Requirement:**\
-      we increase required shares by the fee amount to account for the swap fee and slippage realized in a single sided deposit.\\
+**BLND Deposit Requirement:**\
+we increase required shares by the fee amount to account for the swap fee and slippage realized in a single sided deposit.\\
 
-      $$
-      requiredBLND = -\frac{\frac{10m-sharesRequired*1.003}{10m}^(1/0.8)*20m-20m}{1-(0.003*(1-0.8))} = 261,660.02
-      $$
-
-  {% endhint %}
+$$
+requiredBLND = -\frac{\frac{10m-sharesRequired*1.003}{10m}^(1/0.8)*20m-20m}{1-(0.003*(1-0.8))} = 261,660.02
+$$
+```
+{% endhint %}
 
 To receive BLND emissions a pool must have sufficient BLND to be added to the backstop reward zone (https://docs.blend.capital/whitepaper/blend-whitepaper#reward-zone).
 
@@ -69,10 +70,10 @@ If the pool creator does not want to fund the backstop themselves, they can stil
 
 Pool creators using the blend-utils repository to deploy a pool can designate whether and how to fund their backstop by setting the following consts in the `deploy_pool.js` script:
 
-- `deposit_asset` - The asset that will be deposited into the BLND:USDC pool to fund the deployed pool's backstop. `0` denotes BLND, `1` denotes USDC, and `2` denotes a balanced deposit of both BLND and USDC.
-- `blnd_max` - The maximum amount of BLND that can be deposited into the liquidity pool. This parameter is not used if the `deposit_asset` isn't `0` or `2`.
-- `usdc_max` - The maximum amount of USDC that can be deposited into the liquidity pool. This parameter is not used if the `deposit_asset` isn't `1` or `2`.
-- `mint_amount` - The number of liquidity pool tokens to mint for the user. The minted tokens will be deposited into the deployed pool's backstop.
+* `deposit_asset` - The asset that will be deposited into the BLND:USDC pool to fund the deployed pool's backstop. `0` denotes BLND, `1` denotes USDC, and `2` denotes a balanced deposit of both BLND and USDC.
+* `blnd_max` - The maximum amount of BLND that can be deposited into the liquidity pool. This parameter is not used if the `deposit_asset` isn't `0` or `2`.
+* `usdc_max` - The maximum amount of USDC that can be deposited into the liquidity pool. This parameter is not used if the `deposit_asset` isn't `1` or `2`.
+* `mint_amount` - The number of liquidity pool tokens to mint for the user. The minted tokens will be deposited into the deployed pool's backstop.
 
 They may also specify the starting status for their pool by setting the `status` const in the `deploy_pool.js` script. The pool's status can be set to `0` for `Active` (as long as the minimum backstop threshold was met), `2` for `Admin-On-Ice`, `3` for `On-Ice`, and `4` for `Admin-Frozen`. For more information on pool status see: https://docs.blend.capital/tech-docs/core-contracts/lending-pool/pool-management
 
@@ -88,9 +89,9 @@ Pool creators using the blend-utils repository to deploy a pool can check the re
 
 Before deploying a pool, you must decide on the following pool parameters:
 
-- pool-name: The name of the pool.
-- (backstop-take-rate)\[https://docs.blend.capital/pool-creators/setting-backstop-take-rate]
-- (max-positions)\[https://docs.blend.capital/pool-creators/setting-max-positions]
+* pool-name: The name of the pool.
+* (backstop-take-rate)\[https://docs.blend.capital/pool-creators/setting-backstop-take-rate]
+* (max-positions)\[https://docs.blend.capital/pool-creators/setting-max-positions]
 
 Pool creators using the blend-utils repository to deploy a pool can check the readme to see how to set these parameters for pools deployed with the `deploy-pool.js` script.
 

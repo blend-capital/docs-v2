@@ -4,7 +4,7 @@ The Lending pool contract allows users and liquidators to manipulate the user fu
 
 ## Requests
 
-All fund management is carried out using `Request` structs&#x20;
+All fund management is carried out using `Request` structs
 
 ```
 pub struct Request {
@@ -18,7 +18,7 @@ which are input into a single `submit()` function. Multiple requests can be bund
 
 The following request types are supported:
 
-* `Deposit` (enum 0): Deposits funds into the pool. These funds are not collateralized.&#x20;
+* `Deposit` (enum 0): Deposits funds into the pool. These funds are not collateralized.
 
 {% hint style="info" %}
 This request is useful for users who want to deposit funds but do not want these funds to be liquidated in the event their account becomes delinquent. Additionally, they're valuable in pools with strict position count limits since uncollateralized deposits don't count toward position count limits.
@@ -46,7 +46,7 @@ Borrow requests will fail if `pool_status` is greater than 1 (meaning the pool i
 * `Fill Liquidation` (enum 6): Fills a user liquidation. This involves transferring a portion of the liquidated user's collateral and liabilities to the liquidator.
 * `Fill Bad Debt Auction` (enum 7): Fills a bad debt auction. This involves transferring bad debt stored as liabilities in the Backstop contract's positions to the liquidator's positions.
 * `Fill Interest Auction` (enum 8): Fills an interest auction. This request does not modify the filler's positions.
-* `Delete Liquidation Auction` (enum 9): Cancel's an ongoing liquidation.&#x20;
+* `Delete Liquidation Auction` (enum 9): Cancel's an ongoing liquidation.
 
 {% hint style="danger" %}
 Delete Liquidation Auction requests will fail if `pool_status` is greater than 1 (meaning the pool is `Frozen` or `On-Ice`)
@@ -59,5 +59,10 @@ All requests will fail if the pool status is 6 (`Setup)`
 Requests are flexible in that they can be carried out on behalf of other users utilizing the `spender` `from` and `to` parameters on the `submit()` function. This allows users to delegate fund management to other users or contracts.
 
 {% hint style="warning" %}
-The addresses input into the `from` and `to` parameters are required to authorize the `submit()` call or it will fail.&#x20;
+The addresses input into the `from` and `to` parameters are required to authorize the `submit()` call or it will fail.
 {% endhint %}
+
+#### Additional Submit Methods
+
+User's can also utilize `submit_with_allowance()`  and `flash_loan()` to modify positions. Submit with allowance prompts the pool contract to call `transfer_from()` instead of `transfer()`when moving tokens, this is required for some integrations. `flash_loan()` allows users to borrow as much as they want from the pool without posting collateral as long as their position is healthy at the end of modification. This is useful for arbitrage bots, liquidation bots, and for easily entering leveraged positions.
+

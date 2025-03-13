@@ -33,3 +33,8 @@ Generally, an asset's liability factor should be set lower the riskier an asset 
 ### Utilization Cap
 
 Pool creators can set asset utilization caps to prevent more than a certain percentage of an asset from being borrowed. This parameter is useful for protecting lenders in the case of an oracle failure. For example, by setting the utilization cap of assets primarily used as collateral to 25%, no more than 25% of deposits can be stolen during an oracle attack.
+
+### Collateral Cap
+
+Pool creators can set a collateral cap for assets. This limits the total amount of the asset that can be used as collateral. Pool creators should use this parameter to limit the pools exposure to long tail and volatile assets they want to use as collateral. It's also VERY important that they use it to protect the pool from issuer risks. Centralized assets (real world assets and stablecoins) can be infinitely minted by their issuers if the issuer becomes malicious or compromised. Setting collateral caps on these assets limits the amount of damage that can be done if such a scenario occurs.&#x20;
+

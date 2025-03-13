@@ -37,7 +37,7 @@ flowchart LR
     I -->|Yes| J[["SET
     status=3"]]
     I -->|No| K{q4w>=60%}
-    H -->|No| K
+    H -->|No| Done
     K -->|Yes| G
     K -->|No| L{"q4w>=30%
     or
@@ -82,7 +82,7 @@ flowchart TB
 
 Asset parameters can only be updated by the pool admin. They're updated in a two-step process that involves a 7-day queue to prevent admins from suddenly adding unsafe assets or parameters. The process is as follows:
 
-1. The admin calls `queue_set_reserve()` with the new parameters. This stores a queued reserve update in a hashmap with the address of the asset being added or updated as the key and a `QueuedReserveInit` struct as the value&#x20;
+1. The admin calls `queue_set_reserve()` with the new parameters. This stores a queued reserve update in a hashmap with the address of the asset being added or updated as the key and a `QueuedReserveInit` struct as the value
 
 ```rust
 pub struct QueuedReserveInit {
