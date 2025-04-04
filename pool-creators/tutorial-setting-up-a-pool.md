@@ -2,6 +2,8 @@
 
 Here we'll walk through a step-by-step guide to deploying and setting up a new pool. The deployment should be carried out using the blend\_utils repo which has scripts for doing so.
 
+NOTE: this guide may be out of date - we recommend cross-referencing with the up to date guide here: [https://github.com/blend-capital/blend-utils?tab=readme-ov-file#pool-deployment](https://github.com/blend-capital/blend-utils?tab=readme-ov-file#pool-deployment)
+
 ## Step 1: Decide on an oracle
 
 The oracle is backbone of a pool, and cannot be changed once an oracle is set.
