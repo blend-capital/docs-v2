@@ -7,3 +7,5 @@ When they add assets, they must also set the asset's [risk](risk-parameters.md),
 Pool Admins can add and remove assets from the pool and modify their parameters. This is important to note as pool creators should opt for an Owned Pool over a Standard Pool if they require flexibility with assets in the future.
 
 Assets can be anything that follows the standard token interface. This includes native stellar tokens, bridged assets, or even custom tokens such as credit tokens.
+
+A pool cannot have more than 30 assets.
