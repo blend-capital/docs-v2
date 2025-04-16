@@ -18,22 +18,22 @@ The backstop withdrawal queue has been reduced to 17 days from 21 days.
 
 ### Reward Zone Length
 
-The reward zone length has been set to a fixed 50. This has been increased from the original 10, and no longer increases every 3 months.
+The reward zone length has been set to a fixed 30. This has been increased from the original 10, and no longer increases every 3 months.
 
 ## Blend Whitepaper
 
-- [Abstract](blend-whitepaper.md#abstract)
-- [Introduction](blend-whitepaper.md#introduction)
-- [Protocol Specification](blend-whitepaper.md#protocol-specification)
-  - [Isolated Lending Pools](blend-whitepaper.md#isolated-lending-pools)
-  - [Backstop Module](blend-whitepaper.md#backstop-module)
-  - [Lending and Borrowing](blend-whitepaper.md#lending-and-borrowing)
-  - [Interest Rates](blend-whitepaper.md#interest-rates)
-  - [Liquidations](blend-whitepaper.md#liquidations)
-- [Governance and Decentralization](blend-whitepaper.md#governance-and-decentralization)
-  - [Pool Management](blend-whitepaper.md#pool-management)
-  - [BLND Emissions](blend-whitepaper.md#blnd-emissions)
-- [References](blend-whitepaper.md#references)
+* [Abstract](blend-whitepaper.md#abstract)
+* [Introduction](blend-whitepaper.md#introduction)
+* [Protocol Specification](blend-whitepaper.md#protocol-specification)
+  * [Isolated Lending Pools](blend-whitepaper.md#isolated-lending-pools)
+  * [Backstop Module](blend-whitepaper.md#backstop-module)
+  * [Lending and Borrowing](blend-whitepaper.md#lending-and-borrowing)
+  * [Interest Rates](blend-whitepaper.md#interest-rates)
+  * [Liquidations](blend-whitepaper.md#liquidations)
+* [Governance and Decentralization](blend-whitepaper.md#governance-and-decentralization)
+  * [Pool Management](blend-whitepaper.md#pool-management)
+  * [BLND Emissions](blend-whitepaper.md#blnd-emissions)
+* [References](blend-whitepaper.md#references)
 
 ## Abstract
 
@@ -51,7 +51,7 @@ Blend represents a new, more primitive approach to decentralized money market pr
 
 ### System Diagram
 
-<figure><img src=".gitbook/assets/Blend System Diagram@3x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Blend%20System%20Diagram@3x.png" alt=""><figcaption></figcaption></figure>
 
 ### Isolated Lending Pools
 
@@ -151,7 +151,7 @@ $$
 
 <figure><img src=".gitbook/assets/interest_rate_model.png" alt=""><figcaption></figcaption></figure>
 
-_Figure 1: Interest rate curve examples for various asset classes where low curve has (U_T=0.9, R_1=0.03, R_2=0.2, R_3=1), medium curve has (U_T=0.75, R_1=0.05, R_2=0.5, R_3=1.5), high curve has (U_T=0.6, R_1=0.07, R_2=1, R_3=2), and the Rate Modifier is 1._
+_Figure 1: Interest rate curve examples for various asset classes where low curve has (U\_T=0.9, R\_1=0.03, R\_2=0.2, R\_3=1), medium curve has (U\_T=0.75, R\_1=0.05, R\_2=0.5, R\_3=1.5), high curve has (U\_T=0.6, R\_1=0.07, R\_2=1, R\_3=2), and the Rate Modifier is 1._
 
 The Rate Modifier is a reactive value that adjusts the interest rate the pool charges for borrowing the asset to achieve a target utilization rate. The modifier slowly sums the error in utilization over time, compensating for any steady-state error as a result of the user-defined initial interest rates. The value is bounded between _\[0.1, 100]_ to limit the effective interest rate change possible and avoid potential integral windup that could cause instability. The updated modifier is calculated as follows:
 
