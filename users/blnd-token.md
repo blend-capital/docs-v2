@@ -14,12 +14,11 @@ BLND is Blend's protocol token. BLND tokens are emitted to users by the protocol
 
 Users receive BLND tokens just for using the Blend Protocol!
 
-Lenders and borrowers receive emissions if the pool they're using is in the [reward zone](../blend-whitepaper.md#reward-zone) and has allocated emissions to lenders or borrowers of the asset they're lending or borrowing. 30% of BLND emissions are distributed to pools in the reward zone, and they're split between pools based on how large the pool's backstop deposit is.&#x20;
+Lenders and borrowers receive emissions if the pool they're using is in the [reward zone](../blend-whitepaper.md#reward-zone) and has allocated emissions to lenders or borrowers of the asset they're lending or borrowing. 30% of BLND emissions are distributed to pools in the reward zone, and they're split between pools based on how large the pool's backstop deposit is.
 
-Backstop depositors always receive emissions. 70% of BLND emissions are distributed to backstop depositors.\
+Backstop depositors always receive emissions. 70% of BLND emissions are distributed to backstop depositors.\\
 
-
-Emissions must claim them from either the pool or backstop (depending on how they were earned) to receive their issued BLND. When users claim backstop emissions, the earned BLND is deposited into the [BLND:USDC 80:20 liquidity pool](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares), and the shares are deposited into the backstop module for the pool the user was backstopping or using.  Emissions earned from lending and borrowing are simply transferred to the user for them to do with as they wish.
+Emissions must claim them from either the pool or backstop (depending on how they were earned) to receive their issued BLND. When users claim backstop emissions, the earned BLND is deposited into the [BLND:USDC 80:20 liquidity pool](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares), and the shares are deposited into the backstop module for the pool the user was backstopping or using. Emissions earned from lending and borrowing are simply transferred to the user for them to do with as they wish.
 
 ### How many BLND tokens are there?
 
@@ -37,16 +36,6 @@ Emissions must claim them from either the pool or backstop (depending on how the
 *   9,750,000 BLND to investors
 
     These tokens will be distributed to lockup smart contracts that allow half to be accessed after 6 months, and the remainder to be accessed after a year.
-
-Token Distribution Visualized (CURRENTLY OUTDATED)
-
-<figure><img src="../.gitbook/assets/5yrblnddistro.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/blnd10yrdistro.png" alt=""><figcaption></figcaption></figure>
-
-Assumptions:
-
-* Yieldblox DAO and Ecosystem Organizations deposit all their BLND in the backstop module.
 
 ### Was there a BLND airdrop?
 

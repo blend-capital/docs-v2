@@ -1,11 +1,12 @@
 # Table of contents
 
-* [Blend Documentation](README.md)
+* [Blend v2 Documentation](README.md)
 * [📄 Blend Whitepaper](blend-whitepaper.md)
 * [🧪 Media Kit](media-kit.md)
 * [🚀 Deployments](mainnet-deployments.md)
 * [🕵️‍♂️ Audits & Bug Bounties](audits-and-bug-bounties.md)
 * [🧑‍🏭 Github](github.md)
+* [v1 Docs](https://docs-v1.blend.capital/)
 
 ## 👥 Users
 
