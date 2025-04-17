@@ -24,6 +24,10 @@ Emissions must claim them from either the pool or backstop (depending on how the
 
 Blend V2 is currently issuing retroactive emissions. These are nonclaimable emissions that will be claimable once the emitter backstop swap occurs (this is the "official" protocol upgrade). After the backstop swap, BLND will be distributed to the V2 backstop, and all emissions will be claimable.&#x20;
 
+More information on backstop swaps:&#x20;
+
+docs.blend.capital/blend-whitepaper#blnd-emissions
+
 ### How many BLND tokens are there?
 
 49 million BLND tokens were emitted upon protocol launch using [the Drop function](../blend-whitepaper.md#emissions-drop). After that, the protocol will emit 1 BLND per second to users. The initially minted tokens will be distributed as follows:
