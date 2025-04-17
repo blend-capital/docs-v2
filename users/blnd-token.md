@@ -20,6 +20,10 @@ Backstop depositors always receive emissions. 70% of BLND emissions are distribu
 
 Emissions must claim them from either the pool or backstop (depending on how they were earned) to receive their issued BLND. When users claim backstop emissions, the earned BLND is deposited into the [BLND:USDC 80:20 liquidity pool](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares), and the shares are deposited into the backstop module for the pool the user was backstopping or using. Emissions earned from lending and borrowing are simply transferred to the user for them to do with as they wish.
 
+#### Why can't I claim my V2 Emissions?
+
+Blend V2 is currently issuing retroactive emissions. These are nonclaimable emissions that will be claimable once the emitter backstop swap occurs (this is the "official" protocol upgrade). After the backstop swap, BLND will be distributed to the V2 backstop, and all emissions will be claimable.&#x20;
+
 ### How many BLND tokens are there?
 
 49 million BLND tokens were emitted upon protocol launch using [the Drop function](../blend-whitepaper.md#emissions-drop). After that, the protocol will emit 1 BLND per second to users. The initially minted tokens will be distributed as follows:
