@@ -26,7 +26,7 @@ Blend V2 is currently issuing retroactive emissions. These are nonclaimable emis
 
 More information on backstop swaps:&#x20;
 
-docs.blend.capital/blend-whitepaper#blnd-emissions
+[https://docs.blend.capital/blend-whitepaper#blnd-emissions](https://docs.blend.capital/blend-whitepaper#blnd-emissions)
 
 ### How many BLND tokens are there?
 
