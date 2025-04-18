@@ -20,6 +20,10 @@
 * [BLND Token](users/blnd-token.md)
 * [Auctions](users/auctions.md)
 
+***
+
+* [Emissions](emissions.md)
+
 ## 🌊 Pool Creators
 
 * [General](pool-creators/general.md)

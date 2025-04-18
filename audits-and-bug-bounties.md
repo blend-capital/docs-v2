@@ -1,14 +1,8 @@
 # 🕵️‍♂️ Audits & Bug Bounties
 
-Blend has been Audited by both Certora and Ottersec. All issues have been addressed.
+Blend v1 audits can be found here: [https://docs-v1.blend.capital/audits-and-bug-bounties](https://docs-v1.blend.capital/audits-and-bug-bounties)
 
-### Certora
-
-{% file src=".gitbook/assets/Blend Certora Report.pdf" %}
-
-### Ottersec
-
-{% file src=".gitbook/assets/blend_capital_final.pdf" %}
+Blend v2 was audited by Certora and Code4rena. Reports will be posted here once they are released.
 
 ## Community Bug Bounties
 
@@ -31,5 +25,4 @@ The blend community is also offering bug bounties. Those are listed here:
       * Low 1,000 BLND
       * Payout amounts within ranges are up to the discretion of Markus
     * Contact Info:
-      * Twitter: [https://x.com/markus\_0\_](https://x.com/markus\_0\_)
-
+      * Twitter: [https://x.com/markus\_0\_](https://x.com/markus_0_)
