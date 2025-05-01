@@ -29,7 +29,7 @@ We first deploy a new pool contract by calling the `deploy()` function on the Po
 | max\_positions       | <pre class="language-rust"><code class="lang-rust"><strong>u32
 </strong></code></pre>     | Pool max positions. No decimals. More Information: [setting-max-positions.md](setting-max-positions.md "mention")                                                    |
 | min\_collateral      | <pre class="language-rust"><code class="lang-rust"><strong>i128
-</strong></code></pre>    | The minimum collateral amount required to open a borrow position. Should be set higher than the gas cost required to liquidate the position. $1 is fine.             |
+</strong></code></pre>    | The minimum collateral amount required to open a borrow position. Should be set higher than the gas cost required to liquidate the position (e.g. $1). Scaled to the oracle's decimals.             |
 
 The deployment function will return the new Pool Contract's address.
 
