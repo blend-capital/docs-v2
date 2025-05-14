@@ -37,7 +37,7 @@ flowchart LR
     I -->|Yes| J[["SET
     status=3"]]
     I -->|No| K{q4w>=60%}
-    H -->|No| Done
+    H -->|No| K
     K -->|Yes| G
     K -->|No| L{"q4w>=30%
     or
