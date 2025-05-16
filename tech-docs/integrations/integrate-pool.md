@@ -1,11 +1,5 @@
 # Integrate with a Blend Pool
 
-Table of Contents
-* [Step 1: Choosing a Blend Pool](#step-1-choosing-a-blend-pool)
-* [Step 2: Determine if an intermediate contract is necessary](#step-2-determine-if-an-intermediate-contract-is-necessary)
-* [Step 3: Display Blend Pool data](#step-3-display-blend-pool-data)
-* [Step 4: Allow users to supply and borrow assets](#step-4-allow-users-to-supply-and-borrow-assets)
-
 ## Step 1: Choosing a Blend Pool
 
 The first step in creating a Blend Pool integration is to choose the Blend pool. This is the MOST important step. Blend pool's come in a variety of setups and support a large amount of assets and use cases, so we highly recommend reviewing the documentation on [choosing pools](../../users/choosing-pools.md).
@@ -14,7 +8,7 @@ The first step in creating a Blend Pool integration is to choose the Blend pool.
 
 The second step is deciding if your integration will be directly with the Blend pool or through an intermediate contract. We highly recommend reviewing the documentation for the [fee vault](./fee-vault.md) to see if the features it provides are worth it for your integration. The fee vault enables functionality like interest sharing to add an additional revenue stream for wallet providers.
 
-If using any intermediate contract, the user will be interacting with the intermediate contract instead of the pool directly. The intermediate contract will then interact with the pool for the user.
+If using any intermediate contract, the user will be interacting with the intermediate contract instead of the pool directly as show in [Step 4](#step-4-add-supply-and-withdraw-functionality). The intermediate contract will then interact with the pool for the user.
 
 ## Step 3: Display Blend Pool data
 
@@ -71,19 +65,6 @@ const asssetId = "C..."; // The asset ID of the reserve you want to load
 // This loads the poolMetadata and data for all reserves in the pool.
 const pool = await PoolV2.load(network, poolId);
 const reserve = pool.reserves.get(asssetId);
-
-// ---- To load a single reserve ----
-
-// The backstop take rate is the percentage of interest earned by the backstop module
-// and defined within the pool configuration.
-const backstopTakeRate = poolMetadata.backstopTakeRate;
-
-// The reserve index is based on the order the reserve was added to the pool, and
-// is also the same order as the reserve list in the pool metadata.
-const reserveIndex = 0;
-const reserveId = "C...";
-
-const reserve = await ReserveV2.load(network, poolId, reserveIndex);
 ```
 
 If you only support one reserve, you can load the reserve directly.
@@ -127,9 +108,8 @@ fn get_reserve(e: Env, asset: Address) -> Reserve;
 ```
 
 To calculate interest rates, you can use the `Reserve` struct returned from the `get_reserve` function and follow the interest formula.
-* [Interest formula whitepaper](../../whitepaper/interest-formula.md)
+* [Interest formula whitepaper](../../blend-whitepaper.md#interest-rates)
 * [Blend SDK interest rate calculation](https://github.com/blend-capital/blend-sdk-js/blob/main/src/pool/reserve.ts#L351)
-
 
 ### Emissions data
 
@@ -152,7 +132,7 @@ fn get_reserve_emissions(e: Env, reserve_token_id: u32) -> Option<ReserveEmissio
 
 To calculate an APR for BLND emissions, some math is required.
 1. Calculate the total amount of BLND emitted per protocol token [SDK Reference](https://github.com/blend-capital/blend-sdk-js/blob/main/src/emissions.ts#L59)
-2. Determine the current price of BLND and the reserve token in the same unit (e.g. USDC). This requires converting 1 reserve token to it's underlying asset using the `d_rate` or `b_rate`, then applying either the oracle price of the reserve token or another, equivalent price.
+2. Determine the current price of BLND and the reserve token in the same unit (e.g. USDC). This requires converting 1 reserve token to it's underlying asset using the `d_rate` or `b_rate`, then applying the price of the underyling asset.
 3. Calculate an APR [Blend UI Reference](https://github.com/blend-capital/blend-ui/blob/main/src/utils/math.ts#L10-L26)
 
 ### User data
@@ -239,7 +219,7 @@ const to_lend: 1000n;
 
 // The amount of asset to withdraw, as a fixed point number with the assets decimal places. If the amount of
 // assets to withdraw is greater than the value of the user's bTokens, the transaction will pull down the withdraw amount
-// to the user's bToken posiiton balance.
+// to the user's bToken position balance.
 // (e.g. 1.0 XLM = 10000000n)
 const to_withdraw: 1000n;
 
