@@ -113,7 +113,7 @@ To calculate interest rates, you can use the `Reserve` struct returned from the 
 
 ### Emissions data
 
-Some reserve's earn BLND emissions, which can be emitted to the reserve's suppliers or borrowers. For more information about emissions, please see the [emissions documentation](../../emissions.md).
+Some reserves earn BLND emissions, which can be emitted to the reserve's suppliers or borrowers. For more information about emissions, please see the [emissions documentation](../../emissions.md).
 
 For the SDK, emissions data is included in when loading the reserve for both supply and borrow emissions, and will be undefined if no emissions exist for that position.
 

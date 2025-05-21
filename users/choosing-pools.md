@@ -14,6 +14,6 @@ Users should be careful when choosing a pool to use — below are some things fo
   * The pool should have reasonable collateral and liability factors for supported assets.
 * Ensure the pool's oracle contract is reliable.
   * Lending pools rely on oracles to fetch asset prices — users should always be sure the oracle for their lending pool is reliable, or their assets may be lost.
-* Ensure the pool's admin is trustworthy
-  * Pool admin's have the ability to change the majority of these settings, so trusting them is a requirement for using the pool.
-  * Some pool admin's use disabled public keys. If this is the case, the pool is immutable and no configuration options can be changed.
+* Ensure the pool admin is trustworthy
+  * The pool admin has the ability to change the majority of these settings, so trusting them is a requirement for using the pool.
+  * Some pools use disabled public keys as the admin. If this is the case, the pool is immutable and no configuration options can be changed.
