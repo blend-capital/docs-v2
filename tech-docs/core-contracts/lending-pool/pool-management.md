@@ -12,70 +12,56 @@ Pool status is updated using either a permissionless function, `update_status()`
 * `On_Ice` (enum 3): Borrowing and auction cancellations are disabled.
 * `Admin_Frozen` (enum 4): Borrowing, depositing, and auction cancellations are disabled.
 * `Frozen` (enum 5): Borrowing, depositing, and auction cancellations are disabled.
+* `Setup` (enum 6): The status the pool is initially set to on creation. Borrowing, depositing, and auction cancellations are disabled.
 
 ### Permissionless Updates
 
-Anyone can update pool status permissionlessly by calling `update_status()`. This function checks the backstop state and sets the status based on the current percentage of backstop deposits allocated to the pool that are queued-for-withdrawal(q4w).
+Anyone can update pool status permissionlessly by calling `update_status()`. This function checks the backstop state and sets the status based on the current percentage of backstop deposits allocated to the pool that are queued-for-withdrawal (`q4w`), and if the pool's backstop has reached the deposit threshold (`met_threshold`).
 
 The status is set as follows:
 
 ```mermaid
 flowchart LR
-    A[update_status] --> B{status==6}
-    B --------->|Yes| C[[PANIC!]]
-    B -->|No| D{status==4}
-    D -->|Yes| C
-    D -->|No| E{status==2}
-    E -->|Yes| F{q4w>=75%}
-    F ------>|Yes| G[["SET
-    status=5"]]
-    E -->|No| H{status==0}
-    F -->|No| H
-    H -->|Yes| I{"q4w>=50%
-    or
-    !threshold_met"}
-    I -->|Yes| J[["SET
-    status=3"]]
-    I -->|No| K{q4w>=60%}
-    H -->|No| K
-    K -->|Yes| G
-    K -->|No| L{"q4w>=30%
-    or
-    !threshold_met"}
-    L -->|Yes| J
-    L -->|No| M[["SET
-    status=1"]]
+    A[update_status] --> B{status = 4 or 6}
+    A --> C{status = 2}
+    A --> D{status = 0}
+    A --> E{status =</br>1, 3, or 5}
+    B ----> F[["Panic - StatusNotAllowed"]]
+    C ---> G{q4w >= 75%}
+    G -->|Yes| H[["SET status = 5"]]
+    G -->|No| I[["Keep current status"]]
+    D ---> J{q4w >= 50% or</br>!met_threshold}
+    J -->|Yes| K[["SET status = 3"]]
+    J -->|No| I
+    E --> L{q4w >= 60%}
+    L -->|Yes| H
+    L -->|No| M{q4w >= 30% or</br>!met_threshold}
+    M -->|Yes| K
+    M -->|No| N[["SET status = 1"]]
 ```
 
 ### Permissioned Updates
 
-Pool admins can update pool status by calling `set_status()`. This takes a `status` parameter and sets it after validating it with the following logic:
+Pool admins can update pool status by calling `set_status()`. This takes a `status` parameter (`new_status` in flowchart) and sets it after validating it with the following logic:
 
 ```mermaid
-flowchart TB
-    A[set_status] --> B[status_param=0]
-    A --> C[status_param=2]
-    A --> D[status_param=3]
-    A --> E[status_param=4]
-    A --> F[status_param=other]
-    F --> G[[PANIC!]]
-    B --> H{"!threshold_met
-    or
-    q4w>=50%"}
-    H -->|Yes| G
-    H -->|No| I[["SET
-    status=0"]]
-    C --> J{q4w>=75%}
-    J -->|Yes| G
-    J -->|No| K[["SET
-    status=2"]]
-    D --> L{q4w>=75%}
-    L -->|Yes| G
-    L -->|No| M[["SET
-    status=3"]]
-    E ---> N[["SET
-    status=4"]]
-
+flowchart LR
+    A["set_status(new_status)"] --> B{new_status = 0}
+    A --> C{new_status = 2}
+    A --> D{new_status = 3}
+    A --> E{new_status = 4}
+    A --> F{new_status = other}
+    B --> G{q4w >= 50% or</br>!met_threshold}
+    C --> H{q4w >= 75%}
+    D --> I{q4w >= 75%}
+    E ---> J[["SET status = 4"]]
+    F ---> K[["Panic - BadRequest"]]
+    G -->|Yes| L[["Panic - StatusNotAllowed"]]
+    G -->|No| M[["SET status = 0"]]
+    H -->|Yes| L
+    H -->|No| N[["SET status = 2"]]
+    I -->|Yes| L
+    I -->|No| O[["SET status = 3"]]
 ```
 
 ## Asset Parameters
