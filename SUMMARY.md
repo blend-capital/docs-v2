@@ -62,4 +62,7 @@
     * [Protocol Tokens](tech-docs/core-contracts/lending-pool/protocol-tokens.md)
 * [Guides](tech-docs/guides/README.md)
   * [Deploying a Pool](tech-docs/guides/deploying-a-pool.md)
+* [Integrations](tech-docs/integrations/README.md)
+  * [Integrate with a Blend Pool](tech-docs/integrations/integrate-pool.md)
+  * [Fee Vault](tech-docs/integrations/fee-vault.md)
 * [Potential Improvements](tech-docs/potential-improvements.md)
