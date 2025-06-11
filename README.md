@@ -6,7 +6,7 @@ This is the Blend v2 documentation page. Your place for all things related to th
 
 #### What you'll find here:
 
-* [User Documentation](broken-reference/) Information on how users can utilize Blend lending pools
+* [User Documentation](https://docs.blend.capital/users) Information on how users can utilize Blend lending pools
 * [Pool Creator Documentation](pool-creators/general.md) Information on how pool creators can create lending pools using Blend
 
 Explore the docs to find out more!
