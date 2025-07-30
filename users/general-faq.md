@@ -38,9 +38,10 @@ Within the ecosystem, this promises to:
 
 ### How do I use Blend?
 
-Currently, Blend is still in development. Once it's released to the Stellar testnet, there will be a web app where users can use it.&#x20;
+A version of the Blend UI is deployed to IPFS and can be accessed via\
+[https://mainnet.blend.capital](https://mainnet.blend.capital/)
 
-More technical users can also use Blend directly by calling the smart contracts using the Horizon API layer. Please see the Soroban documentation and the [technical docs](../tech-docs/general.md) section for more information.
+More technical users can also use Blend directly by calling the smart contracts using the [Stellar RPC](https://developers.stellar.org/docs/data/apis/rpc). Please see the Soroban documentation and the [technical docs](../tech-docs/general.md) section for more information.
 
 ### Does Blend have fees?
 
@@ -56,7 +57,7 @@ Borrowers on Blend must pay interest fees to lenders. These vary based on the pa
 
 **Liquidation Premiums**
 
-When a Blend borrower is liquidated, the liquidator will likely demand a liquidation premium, meaning the value of the collateral they claim will be greater than the value of the liabilities they repay. The size of the premium is market-driven; it will always be the smallest premium needed to clear the liquidation. To learn more about the liquidation mechanism, see the[ liquidations section](../blend-whitepaper.md#liquidations) of the whitepaper.
+When a Blend borrower is liquidated, the liquidator will likely demand a liquidation premium, meaning the value of the collateral they claim will be greater than the value of the liabilities they repay. The size of the premium is market-driven; it will always be the smallest premium needed to clear the liquidation. To learn more about the liquidation mechanism, see the [liquidations section](../blend-whitepaper.md#liquidations) of the whitepaper.
 
 ### Can Blend be changed or upgraded?
 
