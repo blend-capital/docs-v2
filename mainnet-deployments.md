@@ -36,6 +36,8 @@ There are mainnet deployments of blend and blend adjacent smart contracts at the
 
 ## Blend App TOS
 
+{% file src=".gitbook/assets/Blend App TOS.pdf" %}
+
 ## Testnet Deployments
 
 All testnet contracts addresses can be found here
