@@ -1,8 +1,20 @@
 # 🕵️‍♂️ Audits & Bug Bounties
 
+## V1 Audits
+
 Blend v1 audits can be found here: [https://docs-v1.blend.capital/audits-and-bug-bounties](https://docs-v1.blend.capital/audits-and-bug-bounties)
 
-Blend v2 was audited by Certora and Code4rena. Reports will be posted here once they are released.
+## V2 Audits
+
+### Certora&#x20;
+
+{% file src=".gitbook/assets/Script3 - Certora - Blend v2 - Formal Verification Draft v2 Report - June 2025.pdf" %}
+
+{% file src=".gitbook/assets/Script3 - Certora - Blend v2 - Security Assessment Draft v3 Report - April 2025.pdf" %}
+
+### Code4rena
+
+{% file src=".gitbook/assets/Code4rena x Blend V2 audit report.pdf" %}
 
 ## Community Bug Bounties
 
