@@ -24,7 +24,7 @@ Finally, if the selected lending pool backstop is in the reward zone, backstop m
 
 ### What are BLND:USDC 80:20 Liquidity Pool Shares?
 
-Tokens representing ownership in a weighted liquidity pool (LP) holding BLND and USDC tokens in weights of 80% BLND and 20% USDC. \
+Tokens representing ownership in a weighted liquidity pool (LP) holding BLND and USDC tokens in weights of 80% BLND and 20% USDC.\
 \
 A LP is a smart contract that functions as an exchange for the tokens it holds. Liquidity providers deposit tokens in the LP smart contract in exchange for shares representing their deposit. The contract utilizes an algorithm to allow traders to swap between the tokens it holds while paying fees to the liquidity providers.\
 \
@@ -32,12 +32,12 @@ A weighted LP is a LP that has unequal values of the tokens it holds. Traditiona
 
 ### How do User's Backstop Pools?
 
-Users can backstop pools by depositing [BLND:USDC 80:20 weighted liquidity pool shares](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares) in the pools backstop module. They should note that if they wish to withdraw these deposits, they will have to queue them for withdrawal and wait for a 21-day withdrawal queue period to end.&#x20;
+Users can backstop pools by depositing [BLND:USDC 80:20 weighted liquidity pool shares](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares) in the pools backstop module. They should note that if they wish to withdraw these deposits, they will have to queue them for withdrawal and wait for a 17-day withdrawal queue period to end.
 
 ### What are the Risks of Backstopping?
 
-Backstop depositors act as first-loss capital for lending pools. If the pool incurs bad debt, backstop deposits will be auctioned off to cover it. Losses incurred by covering bad debt are shared proportionally between backstop module depositors.&#x20;
+Backstop depositors act as first-loss capital for lending pools. If the pool incurs bad debt, backstop deposits will be auctioned off to cover it. Losses incurred by covering bad debt are shared proportionally between backstop module depositors.
 
 ### How do Backstoppers Claim Earned Interest and Emissions?
 
-Pool backstoppers can claim earned interest and emissions at any point. When claimed, they are deposited into the [BLND:USDC 80:20 liquidity pool](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares), and the shares are added to the user's backstop module deposits.&#x20;
+Pool backstoppers can claim earned interest and emissions at any point. When claimed, they are deposited into the [BLND:USDC 80:20 liquidity pool](backstopping.md#what-are-blnd-usdc-80-20-liquidity-pool-shares), and the shares are added to the user's backstop module deposits.
