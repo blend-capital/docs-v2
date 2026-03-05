@@ -73,3 +73,4 @@ Ideally, price feeds should be aggregated across multiple sources to make them m
 #### Well Known Oracles
 
 * [https://reflector.network/](https://reflector.network/)
+* [https://www.redstone.finance/](https://www.redstone.finance/)
