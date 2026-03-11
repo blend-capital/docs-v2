@@ -49,7 +49,7 @@ Blend users can incur three possible fees:
 
 **Network Fees**
 
-Blend users must pay [Stellar Network fees](https://developers.stellar.org/docs/glossary/fees/) for each transaction.
+Blend users must pay [Stellar Network fees](https://developers.stellar.org/docs/learn/fundamentals/fees-resource-limits-metering) for each transaction.
 
 **Interest Rates**
 
@@ -88,4 +88,4 @@ Lenders using Blend lending pools are exposed to asset risk. High volatility in 
 
 **Stellar Protocol Ledger Risk**
 
-As with all decentralized ledgers, Stellar has its unique set of risks. You can read more about the Stellar Consensus Protocol and its risks [here](https://developers.stellar.org/docs/glossary/scp/).
+As with all decentralized ledgers, Stellar has its unique set of risks. You can read more about the Stellar Consensus Protocol and its risks [here](https://developers.stellar.org/docs/learn/fundamentals/stellar-consensus-protocol).

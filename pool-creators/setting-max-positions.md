@@ -10,4 +10,4 @@ Pool creators must be very careful to not set this parameter too high as it can 
   * This depends heavily on oracle and asset configurations. 6 is the reccomendation with the standard oracle aggregator linked in [https://app.gitbook.com/o/-Me0aIJ5ubY2Yyeo6UbM/s/Lg1UeA72WAt02V2TIIga/\~/changes/7/pool-creators/selecting-an-oracle](selecting-an-oracle.md)
 * Assets deployed on Soroban have larger resource requirements than Stellar Classic assets so any pool creator utilizing these assets should test the limits themselves.&#x20;
 
-These limits will change as Soroban resource limits increase - see: https://soroban.stellar.org/docs/reference/resource-limits-fees
+These limits will change as Soroban resource limits increase - see: https://lab.stellar.org/network-limits
