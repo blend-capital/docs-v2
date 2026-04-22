@@ -2,7 +2,7 @@
 
 Oracles are smart contracts that publish off-chain data on-chain. Blend pools use price oracles to get the prices of their assets.\
 \
-Pool creators must set a pool's oracle contract when they create a pool. This must be a single contract that can report prices for all assets in the pool.\
+Pool creators must set a pool's oracle contract when they create a pool. This must be a single contract that can report prices for all assets in the pool.
 
 **Oracles CANNOT be changed after a pool is created, so please be very careful when selecting an oracle for a pool.**
 
@@ -63,12 +63,11 @@ Pool creators may find different types of price feeds useful. The two main types
 * Spot: Spot price feeds report the current price of an asset.
 * TWAPs (time-weighted-asset-prices): These price feeds report average asset price over a given time period. These price feeds are more difficult to manipulate than spot price feeds; they are preferable for high-volatility or low-liquidity assets. TWAPs come in two types:
   * GM-TWAPS: geometric mean TWAPs calculate the geometric mean of an asset's price over a given time period. They are more resistant to manipulation than AM-TWAPS.
-  * AM-TWAPS: arithmetic mean TWAPs calculate the arithmetic mean of an asset's price over a given time period.&#x20;
+  * AM-TWAPS: arithmetic mean TWAPs calculate the arithmetic mean of an asset's price over a given time period.
 
 #### Price Feed Aggregation
 
 Ideally, price feeds should be aggregated across multiple sources to make them more manipulation-resistant. For example, a price feed reporting the XLM:USD spot price might aggregate the price by taking the average price from the Stellar DEX, Binance orderbook, and Coinbase orderbook.
-
 
 #### Well Known Oracles
 
