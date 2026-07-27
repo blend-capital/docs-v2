@@ -14,22 +14,14 @@ Please review [Selecting an Oracle](selecting-an-oracle.md).
 
 We first deploy a new pool contract by calling the `deploy()` function on the Pool Factory Contract. The function takes the following parameters:
 
-| Parameter            | Type                                                                                      | Description                                                                                                                                                          |
-| -------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin                | <pre class="language-rust"><code class="lang-rust">Address
-</code></pre>                  | Address of the pool admin. More Information : [pool-management.md](../tech-docs/core-contracts/lending-pool/pool-management.md "mention")                            |
-| name                 | <pre class="language-rust"><code class="lang-rust">String
-</code></pre>                   | The Pool name. Used by UI's to render a name for the pool.                                                                                                           |
-| salt                 | <pre class="language-rust"><code class="lang-rust">BytesN&#x3C;32>
-</code></pre>          | Random bytes used to generate the pool contract address                                                                                                              |
-| oracle               | <pre class="language-rust"><code class="lang-rust"><strong>Address
-</strong></code></pre> | Address of the oracle contract used by the pool. More Information: [selecting-an-oracle.md](selecting-an-oracle.md "mention")                                        |
-| backstop\_take\_rate | <pre class="language-rust"><code class="lang-rust"><strong>u32
-</strong></code></pre>     | <p>Pool backstop take rate. Scaled to 7 decimals.<br>More Information:<br><a data-mention href="setting-backstop-take-rate.md">setting-backstop-take-rate.md</a></p> |
-| max\_positions       | <pre class="language-rust"><code class="lang-rust"><strong>u32
-</strong></code></pre>     | Pool max positions. No decimals. More Information: [setting-max-positions.md](setting-max-positions.md "mention")                                                    |
-| min\_collateral      | <pre class="language-rust"><code class="lang-rust"><strong>i128
-</strong></code></pre>    | The minimum collateral amount required to open a borrow position. Should be set higher than the gas cost required to liquidate the position (e.g. $1). Scaled to the oracle's decimals.             |
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>admin</td><td><pre class="language-rust"><code class="lang-rust">Address
+</code></pre></td><td></td></tr><tr><td></td><td>Address of the pool admin. More Information : <a data-mention href="../tech-docs/core-contracts/lending-pool/pool-management.md">pool-management.md</a></td><td></td></tr><tr><td>name</td><td><pre class="language-rust"><code class="lang-rust">String
+</code></pre></td><td></td></tr><tr><td></td><td>The Pool name. Used by UI's to render a name for the pool.</td><td></td></tr><tr><td>salt</td><td><pre class="language-rust"><code class="lang-rust">BytesN&#x3C;32>
+</code></pre></td><td></td></tr><tr><td></td><td>Random bytes used to generate the pool contract address</td><td></td></tr><tr><td>oracle</td><td><pre class="language-rust"><code class="lang-rust"><strong>Address
+</strong></code></pre></td><td></td></tr><tr><td></td><td>Address of the oracle contract used by the pool. More Information: <a data-mention href="selecting-an-oracle.md">selecting-an-oracle.md</a></td><td></td></tr><tr><td>backstop_take_rate</td><td><pre class="language-rust"><code class="lang-rust"><strong>u32
+</strong></code></pre></td><td></td></tr><tr><td></td><td>Pool backstop take rate. Scaled to 7 decimals.<br>More Information:<br><a data-mention href="setting-backstop-take-rate.md">setting-backstop-take-rate.md</a></td><td></td></tr><tr><td>max_positions</td><td><pre class="language-rust"><code class="lang-rust"><strong>u32
+</strong></code></pre></td><td></td></tr><tr><td></td><td>Pool max positions. No decimals. More Information: <a data-mention href="setting-max-positions.md">setting-max-positions.md</a></td><td></td></tr><tr><td>min_collateral</td><td><pre class="language-rust"><code class="lang-rust"><strong>i128
+</strong></code></pre></td><td></td></tr><tr><td></td><td>The minimum collateral amount required to open a borrow position. Should be set higher than the gas cost required to liquidate the position (e.g. $1). Scaled to the oracle's decimals.</td><td></td></tr></tbody></table>
 
 The deployment function will return the new Pool Contract's address.
 
@@ -64,7 +56,7 @@ pub struct ReserveConfig {
     pub r_two: u32,  // the R2 value in the interest rate formula scaled expressed in 7 decimals
     pub r_three: u32, // the R3 value in the interest rate formula scaled expressed in 7 decimals
     pub reactivity: u32, // the reactivity constant for the reserve scaled expressed in 7 decimals
-    pub collateral_cap: i128, // the total amount of underlying tokens that can be used as collateral
+    pub supply_cap: i128, // the total amount of underlying tokens that can be supplied to the reserve
     pub enabled: bool,        // the enabled flag of the reserve
 }
 ```
@@ -140,29 +132,20 @@ Individuals based outside of restricted jurisdictions can acquire backstop token
 
 To acquire backstop tokens with only USDC we must execute a single sided deposit on the Comet Liquidity Pool by calling the `dep_lp_tokn_amt_out_get_tokn_in` function. The function has the following parameters:
 
-| Parameter         | Type                                                                                      | Description                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| token\_in         | <pre class="language-rust"><code class="lang-rust">Address
-</code></pre>                  | Address of the token being deposited (in this case USDC)                   |
-| pool\_amount\_out | <pre class="language-rust"><code class="lang-rust">i128
-</code></pre>                     | The number of pool tokens to mint                                          |
-| max\_amount\_in   | <pre class="language-rust"><code class="lang-rust">i128
-</code></pre>                     | The maximum amount of tokens (in this case USDC) you're willing to deposit |
-| user              | <pre class="language-rust"><code class="lang-rust"><strong>Address
-</strong></code></pre> | Address of the user depositing                                             |
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>token_in</td><td><pre class="language-rust"><code class="lang-rust">Address
+</code></pre></td><td></td></tr><tr><td></td><td>Address of the token being deposited (in this case USDC)</td><td></td></tr><tr><td>pool_amount_out</td><td><pre class="language-rust"><code class="lang-rust">i128
+</code></pre></td><td></td></tr><tr><td></td><td>The number of pool tokens to mint</td><td></td></tr><tr><td>max_amount_in</td><td><pre class="language-rust"><code class="lang-rust">i128
+</code></pre></td><td></td></tr><tr><td></td><td>The maximum amount of tokens (in this case USDC) you're willing to deposit</td><td></td></tr><tr><td>user</td><td><pre class="language-rust"><code class="lang-rust"><strong>Address
+</strong></code></pre></td><td></td></tr><tr><td></td><td>Address of the user depositing</td><td></td></tr></tbody></table>
 
 #### Option 2: Acquiring Backstop Tokens using Both BLND and USDC
 
 We use the Comet Liquidity Pool's `join_pool` function to mint backstop tokens using both BLND and USDC. It has the following parameters:
 
-| Parameter         | Type                                                                                             | Description                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| pool\_amount\_out | <pre class="language-rust"><code class="lang-rust">i128
-</code></pre>                            | The number of pool tokens to mint                                                                               |
-| max\_amounts\_in  | <pre class="language-rust"><code class="lang-rust"><strong>Vec&#x3C;i128>
-</strong></code></pre> | The maximum amount of tokens you're willing to deposit. BLND amount is first in the Vec, USDC amount is second. |
-| user              | <pre class="language-rust"><code class="lang-rust"><strong>Address
-</strong></code></pre>        | Address of the user depositing                                                                                  |
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>pool_amount_out</td><td><pre class="language-rust"><code class="lang-rust">i128
+</code></pre></td><td></td></tr><tr><td></td><td>The number of pool tokens to mint</td><td></td></tr><tr><td>max_amounts_in</td><td><pre class="language-rust"><code class="lang-rust"><strong>Vec&#x3C;i128>
+</strong></code></pre></td><td></td></tr><tr><td></td><td>The maximum amount of tokens you're willing to deposit. BLND amount is first in the Vec, USDC amount is second.</td><td></td></tr><tr><td>user</td><td><pre class="language-rust"><code class="lang-rust"><strong>Address
+</strong></code></pre></td><td></td></tr><tr><td></td><td>Address of the user depositing</td><td></td></tr></tbody></table>
 
 #### Option 3: Acquiring Backstop Tokens using BLND
 
@@ -172,14 +155,10 @@ To acquire backstop tokens with only BLND we execute a single sided deposit on t
 
 We can deposit backstop tokens into the backstop by calling `deposit()` on the Backstop contract. It has the following parameters:
 
-| Parameter     | Type                                                                                      | Description                                                                                                |
-| ------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| from          | <pre class="language-rust"><code class="lang-rust">Address
-</code></pre>                  | The address of the user depositing the tokens                                                              |
-| pool\_address | <pre class="language-rust"><code class="lang-rust"><strong>Address
-</strong></code></pre> | The address of the pool the backstop deposit is being made to. In this case it's the address of your pool. |
-| amount        | <pre class="language-rust"><code class="lang-rust"><strong>i128
-</strong></code></pre>    | The number of backstop tokens you wish to deposit.                                                         |
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>from</td><td><pre class="language-rust"><code class="lang-rust">Address
+</code></pre></td><td></td></tr><tr><td></td><td>The address of the user depositing the tokens</td><td></td></tr><tr><td>pool_address</td><td><pre class="language-rust"><code class="lang-rust"><strong>Address
+</strong></code></pre></td><td></td></tr><tr><td></td><td>The address of the pool the backstop deposit is being made to. In this case it's the address of your pool.</td><td></td></tr><tr><td>amount</td><td><pre class="language-rust"><code class="lang-rust"><strong>i128
+</strong></code></pre></td><td></td></tr><tr><td></td><td>The number of backstop tokens you wish to deposit.</td><td></td></tr></tbody></table>
 
 ### Other Options to Fund the Backstop
 
@@ -216,11 +195,8 @@ At this point if the pool's backstop was funded in Step 4 so that it has met the
 
 We do so by calling the `add_reward()` function on the Backstop contract. It has the following parameters:
 
-| Parameter  | Type                                                                                      | Description                                                                                                                                                                                                                                                                                                             |
-| ---------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| to\_add    | <pre class="language-rust"><code class="lang-rust">Address
-</code></pre>                  | The address of the pool being added to the reward zone. In this case your pool's contract address.                                                                                                                                                                                                                      |
-| to\_remove | <pre class="language-rust"><code class="lang-rust"><strong>Address
-</strong></code></pre> | The address of the pool being removed from the reward zone. This parameter only matters if the reward zone is full (it currently isn't), in which case your pool must have a larger backstop than one currently in the reward zone. In that case this parameter will be the address of the pool your pool is replacing. |
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>to_add</td><td><pre class="language-rust"><code class="lang-rust">Address
+</code></pre></td><td></td></tr><tr><td></td><td>The address of the pool being added to the reward zone. In this case your pool's contract address.</td><td></td></tr><tr><td>to_remove</td><td><pre class="language-rust"><code class="lang-rust"><strong>Address
+</strong></code></pre></td><td></td></tr><tr><td></td><td>The address of the pool being removed from the reward zone. This parameter only matters if the reward zone is full (it currently isn't), in which case your pool must have a larger backstop than one currently in the reward zone. In that case this parameter will be the address of the pool your pool is replacing.</td><td></td></tr></tbody></table>
 
 And that's it! Your done! If you've completed all 6 steps your pool will now show up in the markets page at [https://mainnet.blend.capital/](https://mainnet.blend.capital/)
